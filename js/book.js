@@ -4,10 +4,12 @@ function Book(author, language, subject, title) {
   this.subject = subject;
   this.title = title;
 
-  /* CHANGE RENDER! THIS IS A TEMPLATE */
+  /* NOTE: Change render! This is currently a barebones template. */
   this.render = () => {
-    const li = document.createElement('li');
+    const li = document.createElement("li");
     li.textContent = this.title;
-    return li; 
-  }
-};
+    return li;
+  };
+
+  /* NOTE: Favorite Feature is currently not implemented. */
+}
