@@ -1,35 +1,15 @@
 // --------------------------
 //#region Initialization
 // --------------------------
-const bookList = document.querySelector(".books");
 const bookshelf = new Bookshelf();
-
-// Load in book data
-for (const bookInfo of bookData) {
-  const book = new Book(
-    bookInfo.author,
-    bookInfo.language,
-    bookInfo.subject,
-    bookInfo.title
-  );
-  bookshelf.addBook(book);
-}
-
-const render = () => {
-  bookList.replaceChildren(bookshelf.render());
-};
-
-// Render the first time the page loads
-bookshelf.filterVisibleBooks(() => true);
-bookshelf.sortVisibleBooks((a, b) => a.title.localeCompare(b.title));
-render();
+bookshelf.seed(bookData);
+bookshelf.render();
 
 //#endregion Initialization
 
 // --------------------------
 //#region Searching
 // --------------------------
-
 const searchInput = document.querySelector("nav input");
 const searchBtn = document.querySelector(".searchBtn");
 
@@ -38,7 +18,7 @@ searchBtn.addEventListener("click", () => {
   const query = searchInput.value.toLowerCase();
   const searchFn = (b) => b.title.toLowerCase().includes(query);
   bookshelf.filterVisibleBooks(searchFn);
-  render();
+  bookshelf.render();
 });
 
 //#endregion Searching
@@ -46,7 +26,6 @@ searchBtn.addEventListener("click", () => {
 // --------------------------
 //#region Sorting
 // --------------------------
-
 const sortBy = document.querySelector(".sortBy");
 
 // NOTE: This only sorts by the titles of the books!
@@ -61,7 +40,7 @@ sortBy.addEventListener("change", () => {
   }
 
   bookshelf.sortVisibleBooks(sortFn);
-  render();
+  bookshelf.render();
 });
 
 //#endregion Sorting

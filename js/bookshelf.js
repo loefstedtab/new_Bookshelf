@@ -2,27 +2,34 @@ function Bookshelf(books = []) {
   this.books = books;
   this.visibleBooks = books;
 
+  this.seed = function (data) {
+    // Load in the data
+    data.forEach((bookInfo) => {
+      const book = new Book(
+        bookInfo.author,
+        bookInfo.language,
+        bookInfo.subject,
+        bookInfo.title
+      );
+      this.addBook(book);
+    });
+
+    // Prepare and sort visible books
+    this.visibleBooks = this.books;
+    this.sortVisibleBooks((a, b) => a.title.localeCompare(b.title));
+  };
+
   this.addBook = function (book) {
     this.books.push(book);
   };
 
-  this.removeBook = function (book) {
-    // Find a book with the same title
-    const idx = this.books.map((b) => b.title).indexOf(book.title);
-    if (idx !== -1) {
-      this.books.splice(idx, 1);
-      return book;
-    } else {
-      return null;
-    }
-  };
-
   /* NOTE: Change render! This is currently a barebones template. */
   this.render = function () {
+    const bookList = document.querySelector(".books");
     const ul = document.createElement("ul");
     const books = this.visibleBooks.map((b) => b.render());
     ul.replaceChildren(...books);
-    return ul;
+    bookList.replaceChildren(ul);
   };
 
   // This allows us to maintain the original list of books
