@@ -1,7 +1,8 @@
 // --------------------------
 //#region Initialization
 // --------------------------
-const bookshelf = new Bookshelf();
+const bookshelfElement = document.querySelector(".books");
+const bookshelf = new Bookshelf(bookshelfElement);
 bookshelf.seed(bookData);
 bookshelf.render();
 
@@ -18,7 +19,6 @@ searchBtn.addEventListener("click", () => {
   const query = searchInput.value.toLowerCase();
   const searchFn = (b) => b.title.toLowerCase().includes(query);
   bookshelf.filterVisibleBooks(searchFn);
-  bookshelf.render();
 });
 
 //#endregion Searching
@@ -34,13 +34,12 @@ sortBy.addEventListener("change", () => {
   let sortFn;
 
   if (query === "titleaz") {
-    sortFn = (a, b) => a.title.localeCompare(b.title);
+    sortFn = (a, z) => a.title.localeCompare(z.title);
   } else if (query === "titleza") {
-    sortFn = (a, b) => b.title.localeCompare(a.title);
+    sortFn = (a, z) => z.title.localeCompare(a.title);
   }
 
   bookshelf.sortVisibleBooks(sortFn);
-  bookshelf.render();
 });
 
 //#endregion Sorting
