@@ -4,17 +4,26 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <link rel="stylesheet" href="main.css" />
+    <title>Bookshelf</title>
   </head>
   <body>
     <nav>
-      <input placeholder="Search">
-      <button class="searchBtn">Search</button>
-      <select class="sortBy">
-        <option value="titleaz">Title A-Z</option>
-        <option value="titleza">Title Z-A</option>
-      </select>
-      </select>
+      <section class="search">
+        <input placeholder="Search" />
+        <button class="searchBtn">Search</button>
+      </section>
+      <section class="sort">
+        <label>Sort by</label>
+        <select class="sortBy">
+          <option value="titleaz">Title A-Z</option>
+          <option value="titleza">Title Z-A</option>
+        </select>
+      </section>
+      <section>
+        You have <span class="favCount">0</span> favorite books.
+        <button class="favUpdateBtn">Update</button>
+      </section>
     </nav>
     <main id="app">
       <ul class="books"></ul>

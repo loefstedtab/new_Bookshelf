@@ -54,6 +54,16 @@ function Bookshelf(htmlElement, books = []) {
   };
 
   /**
+   * @returns the number of favorite books
+   */
+  this.countFavoriteBooks = function () {
+    return this.books.reduce(
+      (count, book) => (book.isFavorite ? count + 1 : count),
+      0
+    );
+  };
+
+  /**
    * Filter visible books according to a given criteria function
    * @param {(book: Book) => boolean} criteria
    */

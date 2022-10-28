@@ -9,6 +9,18 @@ bookshelf.render();
 //#endregion Initialization
 
 // --------------------------
+//#region Favorite Feature
+// --------------------------
+const favCount = document.querySelector(".favCount");
+const updateBtn = document.querySelector(".favUpdateBtn");
+
+updateBtn.addEventListener("click", () => {
+  favCount.textContent = bookshelf.countFavoriteBooks();
+});
+
+//#endregion Favorite Feature
+
+// --------------------------
 //#region Searching
 // --------------------------
 const searchInput = document.querySelector("nav input");
