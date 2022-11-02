@@ -4,11 +4,11 @@
  * @param {HTMLElement} htmlElement the element to render to
  * @param {Book[]} books an optional array of Books
  */
-function Bookshelf(htmlElement, books = []) {
+function Bookshelf(htmlElement, books = [], comments = []) {
   this.books = books;
   this.htmlElement = htmlElement;
   this.visibleBooks = books;
-  
+  this.comments = comments;
 
   /**
    * Process an array of raw book information
@@ -22,7 +22,7 @@ function Bookshelf(htmlElement, books = []) {
         bookInfo.author,
         bookInfo.language,
         bookInfo.subject,
-        bookInfo.title,
+        bookInfo.title
       );
       this.addBook(book);
     });
@@ -42,7 +42,9 @@ function Bookshelf(htmlElement, books = []) {
     this.books.push(book);
   };
 
-  let commentArr = [];
+  this.addComment = function (comment) {
+    this.comments.push(comment);
+  };
 
   /**
    * Use internal Book array to rerender the
@@ -51,32 +53,27 @@ function Bookshelf(htmlElement, books = []) {
   this.render = function () {
     const ul = document.createElement("ul");
     const books = this.visibleBooks.map((b) => {
-    
-    let bookHTML = b.render();
-    
-    let commentText = bookHTML.querySelector(".commentText");
-    let userComment = bookHTML.querySelector(".userComment");
+      let bookHTML = b.render();
 
-    let sendButton = bookHTML.querySelector(".send");
-    sendButton.addEventListener("click", () => {
-      
+      let commentText = bookHTML.querySelector(".commentText");
+      let userComment = bookHTML.querySelector(".userComment");
       let newComment = document.createElement("div");
+      newComment.textContent = `${this.comments}`;
 
-      commentArr.push(userComment.value);
-      newComment.textContent = commentArr
+      let sendButton = bookHTML.querySelector(".send");
+      sendButton.addEventListener("click", () => {
+        this.addComment(userComment.value);
 
-      userComment.value = "";
+        newComment.textContent = this.comments;
 
-      commentText.append(newComment)
+        userComment.value = '';
 
-      console.log("comment button")
+        console.log("comment button");
+        return this.comments;
+      });
 
-    })
-
-    return bookHTML
-    
-    
-    
+      commentText.append(newComment);
+      return bookHTML;
     });
     ul.replaceChildren(...books);
     this.htmlElement.replaceChildren(ul);
