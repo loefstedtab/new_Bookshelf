@@ -76,6 +76,8 @@ function Book(authors, language, subject, title) {
       subjectList.append(subjectItem);
     }
 
+    const userComment = document.createElement
+
     bookInfo.append(authorName, bookLanguage, subjectList);
 
     // Create an element which contains a list of information about the book.
