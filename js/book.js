@@ -62,8 +62,12 @@ function Book(authors, language, subject, title) {
     const bookLanguage = document.createElement("li");
     bookLanguage.textContent = this.language.toUpperCase();
 
+    const middleSection = document.createElement("section");
+    middleSection.style.display = "flex";
+
     const subjectList = document.createElement("ul");
     subjectList.textContent = "Book Subjects: ";
+    subjectList.style.width = "50vw";
     subjectList.style.borderBottom = "2px solid black";
     subjectList.style.borderTop = "2px solid black";
     subjectList.style.marginTop = "5px";
@@ -76,9 +80,69 @@ function Book(authors, language, subject, title) {
       subjectList.append(subjectItem);
     }
 
-    const userComment = document.createElement
+    //This is where the submitted comment text will go after button is pushed.
+    const commentText = document.createElement("p");
+    const commentTextHeader = document.createElement("h3");
+    commentTextHeader.textContent = "Comments: ";
+    commentTextHeader.style.textDecoration = "underline";
+    commentTextHeader.style.marginBottom = '5px'
+    commentText.style.width = "50vw";
+    commentText.style.padding = "15px";
+    commentText.textContent = "";
 
-    bookInfo.append(authorName, bookLanguage, subjectList);
+    commentText.append(commentTextHeader)
+    middleSection.append(subjectList, commentText);
+
+    //Create a button that displays a comment box.
+    const commentButton = document.createElement("button");
+    commentButton.textContent = "Comment";
+    commentButton.style.margin = "5px";
+
+    //create functionality for the comment button
+    //I want this button to display the commentArea
+    commentButton.addEventListener("click", () => {
+      if (commentArea.style.display === "none") {
+        commentArea.style.display = "block";
+      } else {
+        commentArea.style.display = "none";
+      }
+    });
+
+    //Create an comment box for user text input with a button that allows the user to submit the text as a comment on that specific book.
+    const commentArea = document.createElement("section");
+    commentArea.style.display = "none";
+
+    const userComment = document.createElement("textarea");
+    userComment.maxLength = "280";
+    userComment.minLength = "1";
+    userComment.size = "50";
+    userComment.textContent = "";
+
+    const sendButton = document.createElement("button");
+    sendButton.textContent = "Send";
+    sendButton.style.margin = "5px";
+
+    // let commentArr = [];
+    //create functionality for the submit button
+    sendButton.addEventListener("click", () => {
+      let newComment = document.createElement("div")
+      newComment.textContent = userComment.value;
+      userComment.value = "";
+
+      localStorage.setItem('template', newComment.textContent);
+      
+      commentText.append(newComment)
+    });
+
+    commentArea.append(userComment, sendButton);
+
+    bookInfo.append(
+      authorName,
+      bookLanguage,
+      middleSection,
+      commentButton,
+      commentArea
+    );
 
     // Create an element which contains a list of information about the book.
 
