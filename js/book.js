@@ -19,8 +19,7 @@ function Book(authors, language, subject, title) {
     const eachBook = document.createElement("section");
     //Create a header element which contains the title of the book and the favorite button
     const bookHeader = document.createElement("section");
-    bookHeader.style.borderBottom = '5px solid black';
-
+    bookHeader.style.borderBottom = "5px solid black";
 
     /* NOTE: Change render! This is currently a barebones template. */
     const bookTitle = document.createElement("h2");
@@ -29,7 +28,7 @@ function Book(authors, language, subject, title) {
     // Create favorite button
     const favButton = document.createElement("button");
     favButton.textContent = this.isFavorite ? "❤️" : "♡";
-    favButton.style.marginLeft = '8px'
+    favButton.style.marginLeft = "8px";
     bookTitle.append(favButton);
 
     // Toggle favorite property on click
@@ -39,33 +38,47 @@ function Book(authors, language, subject, title) {
     });
 
     bookHeader.append(bookTitle);
-    // Create an element which contains a list of information about the book.
+
+    const infoButton = document.createElement("button");
+    infoButton.textContent = "Book Info";
+    infoButton.style.marginLeft = "8px";
+    bookTitle.append(infoButton);
+
+    infoButton.addEventListener("click", () => {
+      if (bookInfo.style.display === "none") {
+        bookInfo.style.display = "block";
+      } else {
+        bookInfo.style.display = "none";
+      }
+    });
 
     const bookInfo = document.createElement("ul");
+    bookInfo.style.display = "none";
 
     const authorName = document.createElement("li");
     authorName.textContent = this.authors;
-    authorName.style.marginTop = '5px'
+    authorName.style.marginTop = "5px";
 
     const bookLanguage = document.createElement("li");
-    bookLanguage.textContent= this.language.toUpperCase();
-    
+    bookLanguage.textContent = this.language.toUpperCase();
 
     const subjectList = document.createElement("ul");
-    subjectList.textContent = 'Book Subjects: ';
-    subjectList.style.borderBottom = '2px solid black';
-    subjectList.style.borderTop = '2px solid black';
-    subjectList.style.marginTop = '5px'
+    subjectList.textContent = "Book Subjects: ";
+    subjectList.style.borderBottom = "2px solid black";
+    subjectList.style.borderTop = "2px solid black";
+    subjectList.style.marginTop = "5px";
 
     for (const subjectInfo of this.subject) {
       let subjectItem = document.createElement("li");
-      subjectItem.style.listStyle = "none"
+      subjectItem.style.listStyle = "none";
       subjectItem.textContent = subjectInfo;
       subjectItem.style.margin = "5px";
       subjectList.append(subjectItem);
     }
 
     bookInfo.append(authorName, bookLanguage, subjectList);
+
+    // Create an element which contains a list of information about the book.
 
     eachBook.append(bookHeader, bookInfo);
 
