@@ -21,7 +21,7 @@ function Bookshelf(htmlElement, books = []) {
         bookInfo.author,
         bookInfo.language,
         bookInfo.subject,
-        bookInfo.title
+        bookInfo.title,
       );
       this.addBook(book);
     });
