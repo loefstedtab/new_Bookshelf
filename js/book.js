@@ -4,6 +4,7 @@
  * @param {string} language the language the book is written in
  * @param {string[]} subject  array of book topics
  * @param {string} title title of the book
+ * 
  */
 function Book(authors, language, subject, title) {
   this.authors = authors;
@@ -11,6 +12,7 @@ function Book(authors, language, subject, title) {
   this.subject = subject;
   this.title = title;
   this.isFavorite = false;
+  
 
   /**
    * @returns a list item representing this Book
@@ -85,7 +87,9 @@ function Book(authors, language, subject, title) {
     const commentTextHeader = document.createElement("h3");
     commentTextHeader.textContent = "Comments: ";
     commentTextHeader.style.textDecoration = "underline";
-    commentTextHeader.style.marginBottom = '5px'
+    commentTextHeader.style.marginBottom = '5px';
+
+    commentText.classList.add("commentText");
     commentText.style.width = "50vw";
     commentText.style.padding = "15px";
     commentText.textContent = "";
@@ -113,26 +117,30 @@ function Book(authors, language, subject, title) {
     commentArea.style.display = "none";
 
     const userComment = document.createElement("textarea");
+    userComment.classList.add("userComment");
     userComment.maxLength = "280";
     userComment.minLength = "1";
     userComment.size = "50";
     userComment.textContent = "";
 
     const sendButton = document.createElement("button");
+    sendButton.classList.add("send");
     sendButton.textContent = "Send";
     sendButton.style.margin = "5px";
 
     // let commentArr = [];
     //create functionality for the submit button
-    sendButton.addEventListener("click", () => {
-      let newComment = document.createElement("div")
-      newComment.textContent = userComment.value;
-      userComment.value = "";
+    // sendButton.addEventListener("click", () => {
+    //   let newComment = document.createElement("div")
+    //   newComment.textContent = userComment.value;
+    //   userComment.value = "";
 
-      localStorage.setItem('template', newComment.textContent);
-      
-      commentText.append(newComment)
-    });
+    //   localStorage.setItem('template', newComment.textContent);
+
+    //   commentText.append(newComment)
+    // });
+
+    //book.add comment will add to the
 
     commentArea.append(userComment, sendButton);
 

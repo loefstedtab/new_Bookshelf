@@ -8,11 +8,12 @@ function Bookshelf(htmlElement, books = []) {
   this.books = books;
   this.htmlElement = htmlElement;
   this.visibleBooks = books;
+  
 
   /**
    * Process an array of raw book information
    * to initialize Bookshelf properties
-   * @param {{author: string[], language: string, subject: string[], title: string}[]} data an array of book data
+   * @param {{author: string[], language: string, subject: string[], title: string[]}} data an array of book data
    */
   this.seed = function (data) {
     // Load in the data
@@ -41,14 +42,42 @@ function Bookshelf(htmlElement, books = []) {
     this.books.push(book);
   };
 
+  let commentArr = [];
+
   /**
    * Use internal Book array to rerender the
    * existing DOM element for this Bookshelf.
    */
   this.render = function () {
-    /* NOTE: Change render! This is currently a barebones template. */
     const ul = document.createElement("ul");
-    const books = this.visibleBooks.map((b) => b.render());
+    const books = this.visibleBooks.map((b) => {
+    
+    let bookHTML = b.render();
+    
+    let commentText = bookHTML.querySelector(".commentText");
+    let userComment = bookHTML.querySelector(".userComment");
+
+    let sendButton = bookHTML.querySelector(".send");
+    sendButton.addEventListener("click", () => {
+      
+      let newComment = document.createElement("div");
+
+      commentArr.push(userComment.value);
+      newComment.textContent = commentArr
+
+      userComment.value = "";
+
+      commentText.append(newComment)
+
+      console.log("comment button")
+
+    })
+
+    return bookHTML
+    
+    
+    
+    });
     ul.replaceChildren(...books);
     this.htmlElement.replaceChildren(ul);
   };
