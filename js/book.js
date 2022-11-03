@@ -6,12 +6,13 @@
  * @param {string} title title of the book
  * 
  */
-function Book(authors, language, subject, title) {
+function Book(authors, language, subject, title,) {
   this.authors = authors;
   this.language = language;
   this.subject = subject;
   this.title = title;
   this.isFavorite = false;
+  
   
 
   /**
@@ -128,19 +129,7 @@ function Book(authors, language, subject, title) {
     sendButton.textContent = "Send";
     sendButton.style.margin = "5px";
 
-    // let commentArr = [];
-    //create functionality for the submit button
-    // sendButton.addEventListener("click", () => {
-    //   let newComment = document.createElement("div")
-    //   newComment.textContent = userComment.value;
-    //   userComment.value = "";
-
-    //   localStorage.setItem('template', newComment.textContent);
-
-    //   commentText.append(newComment)
-    // });
-
-    //book.add comment will add to the
+    
 
     commentArea.append(userComment, sendButton);
 

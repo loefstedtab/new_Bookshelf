@@ -2,3 +2,25 @@ nav {
   display: flex;
   gap: 2rem;
 }
+
+.newBook{
+  display: flex;
+}
+
+.dropdown{
+  display: none ;
+}
+
+.arrowDown {
+  border: solid black;
+  border-width: 0 3px 3px 0;
+  margin-right: 5px;
+  display: inline-block;
+  padding: 3px;
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+}
+
+.addBook{
+  margin-top: 5px;
+}
