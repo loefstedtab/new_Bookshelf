@@ -43,6 +43,7 @@ function Book(authors, language, subject, title,) {
     bookHeader.append(bookTitle);
 
     const infoButton = document.createElement("button");
+
     infoButton.textContent = "Book Info";
     infoButton.style.marginLeft = "8px";
     bookTitle.append(infoButton);
@@ -56,6 +57,7 @@ function Book(authors, language, subject, title,) {
     });
 
     const bookInfo = document.createElement("ul");
+    bookInfo.classList.add("bookInfo");
     bookInfo.style.display = "none";
 
     const authorName = document.createElement("li");
