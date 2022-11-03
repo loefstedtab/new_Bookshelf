@@ -1,6 +1,26 @@
-nav {
+.booknav{
   display: flex;
+  align-items: center;
   gap: 2rem;
+  position: fixed;
+  top: 0;
+  height: 30px;
+  background-color: grey;
+}
+
+#app{
+  display: flex;
+}
+.navbar{
+  background-color: black;
+  margin: 25px;
+  width: 25vw;
+
+}
+
+
+.books{
+  margin-top: 40px;
 }
 
 .newBook{
@@ -9,6 +29,9 @@ nav {
 
 .dropdown{
   display: none ;
+  position: absolute;
+  margin-top: 25px;
+  background-color: grey;
 }
 
 .arrowDown {

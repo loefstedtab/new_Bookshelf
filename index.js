@@ -63,7 +63,8 @@ sortBy.addEventListener("change", () => {
 
 //we need to create an html element that allows the user to input all the book information.
 const dropdown = document.querySelector(".dropdown");
-
+//this arrow with the event listener expands a dropdown menu that allows the user to input information for a new book. 
+//Takes up less room on the browser
 let downArrow = document.querySelector(".arrowDown");
 downArrow.addEventListener("click", () => {
   if (dropdown.style.display === "none") {
@@ -76,35 +77,31 @@ downArrow.addEventListener("click", () => {
     downArrow.style.transform = "rotate(45deg)";
   }
 });
-//2 questions: Form HTML element reloads page each time the button is clicked
-//And I am missing a step from my logic. I can create a new book with the values in the console.log, but I am missing the part where it renders.
-
+//An addBook button allows the user to submit the new book information and then pushes that book into our bookshelf
 const addBook = document.querySelector(".addBook");
 addBook.addEventListener("click", () => {
   const title = document.querySelector("#title");
   const author = document.querySelector("#author");
   const language = document.querySelector("#language");
   const subjects = document.querySelector("#subjects");
+
   let newBook = new Book(
     author.value,
     language.value,
     subjects.value,
-    title.value,
-    
+    title.value
   );
 
-  
-  console.log("addBook button", newBook);
-  bookshelf.addBook(newBook)
-  console.log("bookshelf", bookshelf)
+  bookshelf.addBook(newBook);
+
   bookshelf.render();
-  
+
   author.value = "";
   language.value = "";
   subjects.value = "";
   title.value = "";
 
-  return bookshelf
+  return bookshelf;
 });
 
 //how do we link the information put into the created html element with our book class?
