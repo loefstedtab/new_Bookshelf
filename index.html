@@ -8,6 +8,7 @@
     <title>Bookshelf</title>
   </head>
   <body>
+    <header class="header"></header>
     <nav class="booknav">
       <section class="search">
         <input placeholder="Search" />
@@ -43,17 +44,17 @@
         </div>
       </section>
     </nav>
-    
+
     <main id="app">
       <nav class="navbar">
+        <div class="stickydiv">
         <a class="link" href="index.html">Bookshelf</a>
         <a class="link" href="about.html">About</a>
         <a class="link" href="contact.html">Contact</a>
+        </div>
       </nav>
-      <section class="rightside"> 
-      <div class="rightTop">Arthur's Bookshelf</div>
+
       <ul class="books"></ul>
-      </section>
     </main>
 
     <script src="js/book-data.js"></script>

@@ -20,6 +20,7 @@ function Book(authors, language, subject, title,) {
    */
   this.render = function () {
     const eachBook = document.createElement("section");
+    eachBook.classList.add("eachBook");
     //Create a header element which contains the title of the book and the favorite button
     const bookHeader = document.createElement("section");
     bookHeader.style.borderBottom = "5px solid black";
