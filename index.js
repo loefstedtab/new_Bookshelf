@@ -115,6 +115,22 @@ addBook.addEventListener("click", () => {
 //on the click then maybe authors, language etc... could be set equal to text.value of each box
 //then the bookshelf.render() might be called at the very end
 
+
+//Thought that I could make a delete book button. Figured it would be as easy as using .pop to remove it from the array of books. However, didnt work out.
+
+
+// const deleteBook = document.querySelector(".deleteBook");
+// deleteBook.addEventListener("click", () => {
+//   bookshelf.removeBook(Book);
+//   bookshelf.render();
+//   return bookshelf
+// })
+
+
+
 //-----------------------------
 //#endregion addbook
 //-----------------------------
+
+
+

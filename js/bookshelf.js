@@ -22,8 +22,7 @@ function Bookshelf(htmlElement, books = [], comments = []) {
         bookInfo.author,
         bookInfo.language,
         bookInfo.subject,
-        bookInfo.title,
-        
+        bookInfo.title
       );
       this.addBook(book);
     });
@@ -43,8 +42,18 @@ function Bookshelf(htmlElement, books = [], comments = []) {
     this.books.push(book);
   };
 
+
+  // This is the function I was going to use to try and remove the book from the array of books.
+  // this.removeBook = function(book) {
+  //   this.books.pop(book)
+  // }
+
   this.addComment = function (comment) {
     this.comments.push(comment);
+  };
+
+  this.removeComment = function (comment) {
+    this.comments.pop(comment);
   };
 
   /**
@@ -67,12 +76,19 @@ function Bookshelf(htmlElement, books = [], comments = []) {
 
         newComment.textContent = this.comments;
 
-        userComment.value = '';
+        userComment.value = "";
 
-        console.log("comment button");
         return this.comments;
       });
 
+      let deleteComment = bookHTML.querySelector(".deleteComment");
+      deleteComment.addEventListener("click", () => {
+        this.removeComment(newComment.textContent);
+
+        newComment.textContent = this.comments;
+
+        return this.comments;
+      });
       commentText.append(newComment);
       return bookHTML;
     });

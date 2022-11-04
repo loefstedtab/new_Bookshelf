@@ -1,0 +1,46 @@
+body{
+    background-color: #2d545e;
+    font-family: 'Helvetica Neue', sans-serif; 
+    font-weight: bold;
+    letter-spacing: -1px; 
+    line-height: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+#main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 2px solid red;
+    border-radius: 100% 100% 0 0;
+    padding-top: 2%;
+}
+
+#loginHeader{
+    text-align: center;
+}
+
+#errorMsg{
+    display: none;
+    background-color: red;
+    opacity: .6;
+    border: 1px solid black;
+    border-radius: 5px;
+    text-align: center;
+    position: fixed;
+    top: 0;
+    right: 42vw;
+}
+
+#loginForm{
+    display: flex;
+    flex-direction: column;
+}
+
+input{
+    margin: 5px;
+}
+

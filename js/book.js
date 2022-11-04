@@ -57,6 +57,13 @@ function Book(authors, language, subject, title,) {
       }
     });
 
+    // const deleteBook = document.createElement("button");
+    // deleteBook.classList.add("deleteBook");
+    // deleteBook.textContent = "Remove Book";
+    // deleteBook.style.marginLeft = "8px";
+    // bookTitle.append(deleteBook)
+
+
     const bookInfo = document.createElement("ul");
     bookInfo.classList.add("bookInfo");
     bookInfo.style.display = "none";
@@ -94,11 +101,20 @@ function Book(authors, language, subject, title,) {
     commentTextHeader.style.marginBottom = '5px';
 
     commentText.classList.add("commentText");
-    commentText.style.width = "50vw";
+    commentText.style.width = "50%";
     commentText.style.padding = "15px";
     commentText.textContent = "";
+    commentText.style.inlineSize = "30%";
+    commentText.style.overflowWrap = "break-word";
 
-    commentText.append(commentTextHeader)
+    //create a button to delete the comments of a book
+   
+    const deleteComment = document.createElement("button");
+    deleteComment.classList.add("deleteComment")
+    deleteComment.textContent= "Remove";
+    
+
+    commentText.append(commentTextHeader, deleteComment)
     middleSection.append(subjectList, commentText);
 
     //Create a button that displays a comment box.
@@ -115,6 +131,8 @@ function Book(authors, language, subject, title,) {
         commentArea.style.display = "none";
       }
     });
+
+    
 
     //Create an comment box for user text input with a button that allows the user to submit the text as a comment on that specific book.
     const commentArea = document.createElement("section");
