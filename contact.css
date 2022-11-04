@@ -1,0 +1,30 @@
+.middle{
+    display: flex;
+}
+
+
+
+.contact {
+  background: rgb(45, 84, 94);
+  background: linear-gradient(
+    180deg,
+    rgba(45, 84, 94, 1) 23%,
+    rgba(66, 95, 102, 1) 46%,
+    rgba(86, 106, 111, 1) 69%,
+    rgba(107, 117, 119, 1) 100%
+  );
+  border: 1px solid #7f5af0;
+  border-radius: 5px;
+  box-shadow: -5px -5px 20px 2px #12343b;
+  margin-right: 20px;
+  padding: 1em;
+  width: 100%;
+
+    
+}
+
+p{
+    font-size: 2em;
+    padding-bottom: 1em;
+    border-bottom: 2px solid #7f5af0;
+}
